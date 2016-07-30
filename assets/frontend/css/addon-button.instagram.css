@@ -1,0 +1,45 @@
+.onp-sl-instagram-button {
+    background: #527fa4;
+}
+.onp-sl-flat-button-instagram-logo {
+    display: block;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAABGdBTUEAAYagMeiWXwAAAAJiS0dEAP+Hj8y/AAAACXBIWXMAAABIAAAASABGyWs+AAAA1klEQVQY0y3JsS6DURiA4fc7TirS9I8ES5duItFIOujI4ibcACIRM1dgFIvERRlYOmAQbcTQ+BNpNfGf18CzPlE22Y0WJwz5JpEofPHsWYqbWKMhAS0ymcmi52XcJQZUdFkBxkyAWPqJKdvhAwsSbW6ZK+045ZXMRuKdmrnHrlpR0fGIDoVx5oDgiX7UXAPn9llniIkGmEX4CUANzIAmk5EdpzHgENjikT6SwwIEL17QjeJHXNFD+AsIFtwTDFhGABypxcZG1cZiUUeUPd/Uov9Z1HHZ/wVUOHDvMby92gAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNi0wNy0zMFQwODo1NTo0MyswMzowMHtG2mIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTYtMDctMzBUMDg6NTU6NDMrMDM6MDAKG2LeAAAAAElFTkSuQmCC') no-repeat;
+    height: 12px;
+    width: 12px;
+    margin: 1px 0 0;
+}
+
+.onp-sl-secrets .onp-sl-instagram .onp-sl-overlay-front {
+    background: #527fa4; /* Old browsers */
+    background: -moz-linear-gradient(top, #527fa4 0%, #46798c 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #527fa4 0%,#46798c 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #527fa4 0%,#46798c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#527fa4', endColorstr='#46798c',GradientType=0 ); /* IE6-9 */
+}
+.onp-sl-secrets .onp-sl-instagram .onp-sl-overlay-back {
+    background: #527fa4;
+}
+.onp-sl-secrets .onp-sl-instagram .onp-sl-overlay-header {
+    background-color: #3c6282;
+}
+.onp-sl-secrets .onp-sl-instagram .onp-sl-overlay-icon {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAQAAAADHm0dAAAABGdBTUEAAYagMeiWXwAAAAJiS0dEAP+Hj8y/AAAACXBIWXMAAABIAAAASABGyWs+AAAB5UlEQVQoz33SPWiUQRDG8f/s7l1INIc2gsEmncVdEURQLCWFNrGxiGApYiERFBEbO4VUKWzS28RO0cLvxigqqMTCQhDBhKigJua8XHL7zmNxx+W10Cm2mP3t7gM7pkihCYZsFzBDk0i5IlXgoU7bx0RDJ+0dgz0yWKLC+KE3hvbYfR9PmrbAS4YQBqiPoCBxw6YwKizaTLBxWn89WlD0V9QBqlZl1Y4koJCb9+9LvYzQ6R3uyMyomMQKK0QSsJtN5nSTJUbsBMep8I2nuHbYYcw0T4UEOInCT4W3TFLXwvrcwL44izFAoOAXMl0BhEi0lqZHDthdFrVgDUY42ny9/SIVCowIqFsdya9v1LTqU0JR+Dn9bA9rVlLuEpSVldWRckOX/JFQ8qQk9MDP+5ikTtcEIpFAgvCVOvMAygA8Y79/ARKBSAwAGIDX+M4oEEMkAqMsxlr/Q/pZs+Rnioaaqgslp2hozff62XLWbhWSPm0M6LI2dU2TflUbutAe1OfeXolKheS3hB/yO3qu2zq4FnRvC5Zpt/neJ1rDeVuu+TF9KEPJ5L3QAI5htFllJ1WECFsjafrNUGmuHPXmrMBKENYDj4HcbwQiQohYghl4Qq5rWZLr3+WSlr2B8DG9+A92yV/lscwffzOW9fU+O5AAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMDctMzBUMDk6MDA6NDUrMDM6MDBSflHbAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE2LTA3LTMwVDA5OjAwOjQ1KzAzOjAwIyPpZwAAAABJRU5ErkJggg==') center no-repeat;
+}
+
+
+.onp-sl-flat .onp-sl-instagram .onp-sl-overlay-front {
+    background: #527fa4;
+    border-bottom: 3px solid #3c6282;
+}
+.onp-sl-flat .onp-sl-instagram .onp-sl-overlay-back {
+    background: #527fa4;
+}
+.onp-sl-flat .onp-sl-instagram .onp-sl-overlay-header {
+    background-color: #3c6282;
+}
+.onp-sl-flat .onp-sl-instagram .onp-sl-overlay-icon {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAQAAAADHm0dAAAABGdBTUEAAYagMeiWXwAAAAJiS0dEAP+Hj8y/AAAACXBIWXMAAABIAAAASABGyWs+AAAB5UlEQVQoz33SPWiUQRDG8f/s7l1INIc2gsEmncVdEURQLCWFNrGxiGApYiERFBEbO4VUKWzS28RO0cLvxigqqMTCQhDBhKigJua8XHL7zmNxx+W10Cm2mP3t7gM7pkihCYZsFzBDk0i5IlXgoU7bx0RDJ+0dgz0yWKLC+KE3hvbYfR9PmrbAS4YQBqiPoCBxw6YwKizaTLBxWn89WlD0V9QBqlZl1Y4koJCb9+9LvYzQ6R3uyMyomMQKK0QSsJtN5nSTJUbsBMep8I2nuHbYYcw0T4UEOInCT4W3TFLXwvrcwL44izFAoOAXMl0BhEi0lqZHDthdFrVgDUY42ny9/SIVCowIqFsdya9v1LTqU0JR+Dn9bA9rVlLuEpSVldWRckOX/JFQ8qQk9MDP+5ikTtcEIpFAgvCVOvMAygA8Y79/ARKBSAwAGIDX+M4oEEMkAqMsxlr/Q/pZs+Rnioaaqgslp2hozff62XLWbhWSPm0M6LI2dU2TflUbutAe1OfeXolKheS3hB/yO3qu2zq4FnRvC5Zpt/neJ1rDeVuu+TF9KEPJ5L3QAI5htFllJ1WECFsjafrNUGmuHPXmrMBKENYDj4HcbwQiQohYghl4Qq5rWZLr3+WSlr2B8DG9+A92yV/lscwffzOW9fU+O5AAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTYtMDctMzBUMDk6MDA6NDUrMDM6MDBSflHbAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE2LTA3LTMwVDA5OjAwOjQ1KzAzOjAwIyPpZwAAAABJRU5ErkJggg==') center no-repeat;
+}
+
+
+

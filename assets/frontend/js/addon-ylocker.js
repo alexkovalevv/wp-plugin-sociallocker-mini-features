@@ -15,7 +15,7 @@
 
 		for( k in onp_sl_addon_ylocker_lockers ) {
 			if( locker.options.lockerId === onp_sl_addon_ylocker_lockers[k]
-				&& $('div[data-lock-id="' + locker.id + '"').find('#onp-sl-addon-ylocker-' + k ).length
+				&& locker.element.find('#onp-sl-addon-ylocker-' + k ).length
 			) onp_sl_addon_ylocker_lockers[k] = locker;
 		}
 	});

@@ -1,6 +1,6 @@
 <?php
 /**
- * Данная модификация позволяет создавать ротацию кнопки "закрыть" для солиального замка
+ * Данная модификация добавяет новые кнопки для солиального замка
  * @author Alex Kovalev <alex.kovalevv@gmail.com>
  */
 
@@ -20,24 +20,28 @@ add_action( 'admin_enqueue_scripts', 'onp_sl_addon_enqueue_scripts_to_post' );
 
 //Подключаем jQuery расширение для превью в админке
 function onp_sl_addon_enqueue_scripts_to_preview() {
-	<<<HTML
-	<script type="text/javascript" src="<?php echo OPANDA_SLA_PLUGIN_URL ?>/assets/frontend/js/addon-locker-loader.js"></script>
+	?>
+	<!--<script type="text/javascript" src="<?php echo OPANDA_SLA_PLUGIN_URL ?>/assets/frontend/js/addon-locker-loader.js"></script>-->
 	<script type="text/javascript" src="<?php echo OPANDA_SLA_PLUGIN_URL ?>/assets/frontend/js/addon-button.livejournal.js"></script>
 	<link rel="stylesheet" href="<?php echo OPANDA_SLA_PLUGIN_URL ?>/assets/frontend/css/addon-button.livejournal.css" type='text/css' media='all'>
-HTML;
+	<script type="text/javascript" src="<?php echo OPANDA_SLA_PLUGIN_URL ?>/assets/frontend/js/addon-button.instagram.js"></script>
+	<link rel="stylesheet" href="<?php echo OPANDA_SLA_PLUGIN_URL ?>/assets/frontend/css/addon-button.instagram.css" type='text/css' media='all'>
+	<?php
 }
 add_action( 'onp_sl_preview_head', 'onp_sl_addon_enqueue_scripts_to_preview' );
 
 //Подключаем jQuery расширение для фронтенда
 function onp_sl_addon_enqueue_scripts_to_frontend() {
-	wp_enqueue_script( 'onp-sl-button-loader', OPANDA_SLA_PLUGIN_URL . '/assets/frontend/js/addon-locker-loader.js', array('opanda-lockers'), false, true );
+	//wp_enqueue_script( 'onp-sl-button-loader', OPANDA_SLA_PLUGIN_URL . '/assets/frontend/js/addon-locker-loader.js', array('opanda-lockers'), false, true );
 	wp_enqueue_script( 'onp-sl-button-livejournal', OPANDA_SLA_PLUGIN_URL . '/assets/frontend/js/addon-button.livejournal.js', array('opanda-lockers'), false, true );
 	wp_enqueue_style( 'onp-sl-button-livejournal', OPANDA_SLA_PLUGIN_URL . '/assets/frontend/css/addon-button.livejournal.css' );
+	wp_enqueue_script( 'onp-sl-button-instagram', OPANDA_SLA_PLUGIN_URL . '/assets/frontend/js/addon-button.instagram.js', array('opanda-lockers'), false, true );
+	wp_enqueue_style( 'onp-sl-button-instagram', OPANDA_SLA_PLUGIN_URL . '/assets/frontend/css/addon-button.instagram.css' );
 }
 add_action( 'opanda_connect_locker_assets', 'onp_sl_addon_enqueue_scripts_to_frontend' );
 
 //Добавляем опции на панель дополнительных опций
-function onp_sl_addon_advanced_options($options) {
+/*function onp_sl_addon_advanced_options($options) {
 	$options[] = array(
 		'type'      => 'checkbox',
 		'way'       => 'buttons',
@@ -71,7 +75,7 @@ function onp_sl_addon_advanced_options($options) {
 	);
 	return $options;
 }
-add_filter('opanda_advanced_options', 'onp_sl_addon_advanced_options', 10, 1);
+add_filter('opanda_advanced_options', 'onp_sl_addon_advanced_options', 10, 1);*/
 
 //Добавляем кнопку в метабокс кнопок
 function onp_sl_addon_add_buttons($tabs) {
@@ -96,6 +100,27 @@ function onp_sl_addon_add_buttons($tabs) {
 		)
 	);
 
+	$tabs['items'][] = array(
+		'type'  => 'tab-item',
+		'name'  => 'instagram',
+		'items' => array(
+			array(
+				'type'    => 'checkbox',
+				'way'     => 'buttons',
+				'title'   => 'Активировать',
+				'hint'    => 'Если Вкл, кнопка будет активирована в вашем замке.',
+				'name'    => 'instagram_available',
+				'default' => false
+			),
+			array(
+				'type'  => 'textbox',
+				'title' => 'Имя пользователя',
+				'hint'  => 'Установите ваше имя пользователя в Instagram.',
+				'name'  => 'instagram_user_name'
+			)
+		)
+	);
+
 	return $tabs;
 }
 add_filter( 'onp_sl_social_options', 'onp_sl_addon_add_buttons' );
@@ -103,10 +128,14 @@ add_filter( 'onp_sl_social_options', 'onp_sl_addon_add_buttons' );
 //Печатаем опции для кнопки на фронтенд
 function onp_sl_addon_locker_options( $options, $id ) {
 
-	$options['locker']['loader'] = opanda_get_item_option($id, 'addon_loader', false );
+	//$options['locker']['loader'] = opanda_get_item_option($id, 'addon_loader', false );
 
 	$options['socialButtons']['livejournal'] = array(
 		'userName' => opanda_get_item_option($id, 'livejournal_user_name', 50 )
+	);
+
+	$options['socialButtons']['instagram'] = array(
+		'userName' => opanda_get_item_option($id, 'instagram_user_name', 50 )
 	);
 
 	return $options;
@@ -116,25 +145,34 @@ add_filter('opanda_social-locker_item_options', 'onp_sl_addon_locker_options', 1
 //Добавляем кнопку список разрешенных кнопок
 function onp_sl_addon_locker_allow_buttons($allowedButtons) {
 	$allowedButtons[] = 'livejournal';
+	$allowedButtons[] = 'instagram';
 	return $allowedButtons;
 }
 add_filter('opanda_social-locker_allowed_buttons', 'onp_sl_addon_locker_allow_buttons', 10, 1);
 
-//Добавлям метку в статистику
+//Добавляем столбец в таблицу статистики
 function onp_sl_addon_detailed_stats_table($table) {
 	$table['channels']['columns']['unlock-via-livejournal'] = array(
 		'title' => 'livejournal',
+		'cssClass' => 'opanda-col-number'
+	);
+	$table['channels']['columns']['unlock-via-instagram'] = array(
+		'title' => 'instagram',
 		'cssClass' => 'opanda-col-number'
 	);
 	return $table;
 }
 add_filter('onp_sl_detailed_stats_table', 'onp_sl_addon_detailed_stats_table', 10, 1);
 
-//Добавляем столбец в таблицу статистики
+//Добавлям метку в статистику
 function onp_sl_addon_detailed_stats_chart($channels) {
 	$channels['unlock-via-livejournal'] = array(
 		'title' => 'livejournal',
 		'color' => '#21A5D8'
+	);
+	$channels['unlock-via-instagram'] = array(
+		'title' => 'instagram',
+		'color' => '#527fa4'
 	);
 	return $channels;
 }
